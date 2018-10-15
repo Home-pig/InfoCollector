@@ -1,0 +1,8 @@
+{
+  "subDomainsBrute": {
+    "action": "False",
+    "args": {
+      "-t": "10"
+    }
+  }
+}

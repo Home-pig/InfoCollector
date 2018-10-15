@@ -1,0 +1,8 @@
+{
+  "pathDetection":{
+    "action":"True"
+  },
+  "webInfo":{
+    "action":"True"
+  }
+}
