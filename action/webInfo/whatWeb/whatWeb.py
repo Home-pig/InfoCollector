@@ -25,7 +25,11 @@ def start(target, arg):
     headers = {
         'user-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36'}
 
-    r = requests.post(url=url, headers=headers, data=data, verify=False)
+    try:
+        r = requests.post(url=url, headers=headers, data=data, verify=False)
+    except Exception as e:
+        opError(e,ACTION_NAME)
+        return 0
     print(r.text)
 
     # save file

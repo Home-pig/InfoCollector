@@ -12,6 +12,8 @@ import random
 
 def printBanner():
     banner = ['''
+    
+    
         88                  ad88                 ,ad8888ba,                88  88                                                            
         ""                 d8"                  d8"'    `"8b               88  88                            ,d                              
                            88                  d8'                         88  88                            88                              
@@ -20,6 +22,8 @@ def printBanner():
         88  88       88    88     8b       d8  Y8,            8b       d8  88  88  8PP"""""""  8b            88     8b       d8  88          
         88  88       88    88     "8a,   ,a8"   Y8a.    .a8P  "8a,   ,a8"  88  88  "8b,   ,aa  "8a,   ,aa    88,    "8a,   ,a8"  88          
         88  88       88    88      `"YbbdP"'     `"Y8888Y"'    `"YbbdP"'   88  88   `"Ybbd8"'   `"Ybbd8"'    "Y888   `"YbbdP"'   88          
+        
+        
     ''', '''
     
 d888888b d8b   db d88888b  .d88b.   .o88b.  .d88b.  db      db      d88888b  .o88b. d888888b  .d88b.  d8888b. 

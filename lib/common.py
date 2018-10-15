@@ -11,6 +11,7 @@ import subprocess
 
 import os
 from urllib.parse import urlparse
+from lib.formatOutput import *
 
 
 def getChooserList(path):
@@ -51,17 +52,22 @@ def execPythonCode(project_name, order):
     :param order: need to be execed
     :return:
     '''
+    opStartExecOrder(order)
     ppath = os.getcwd()
     path = getProjectPath() + "\depend\\" + project_name
-    print(path)
-    print(os.environ['Path'])
     os.chdir(path)
     subprocess.call(order)
     os.chdir(ppath)
 
 
 def getUrlDomain(url):
-    url_domain = urlparse(url)[1]
+    protocol = ["http://","https://"]
+
+    url_domain = urlparse(url)[2]
+    for p in protocol:
+        if p in url:
+            url_domain = urlparse(url)[1]
+
     if ":" in url_domain:
         url_domain = url_domain[:url_domain.index(":")]
     url_domain = url_domain[url_domain.index(".") + 1:]
@@ -76,7 +82,6 @@ def getSaveFilePath(url):
     return path
 
 def addEndingLineFeedOfFile(path):
-    content = []
     with open(path,"r",encoding="utf-8") as f:
         content = f.readlines()
     with open(path,"w",encoding="utf-8") as g_w:

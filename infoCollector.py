@@ -29,7 +29,6 @@ def getActionList():
 def sumTheResult(url):
     path = getSaveFilePath(url)
     save_path = path + "\Result.html"
-    print(path)
     file_list = next(os.walk(path))[2]
     if len(file_list):
         # open final result file
@@ -53,6 +52,7 @@ def main():
 
     # get target url
     url = args[0]
+    opStartInfoCollector(url)
 
     # for each action chooser
     for action in action_list:

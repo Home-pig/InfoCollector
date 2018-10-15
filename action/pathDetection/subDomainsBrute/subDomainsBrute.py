@@ -18,7 +18,11 @@ def start(url, args):
     git_url = "https://github.com/lijiejie/subDomainsBrute.git"
     # do action
     # install judge insatll or not
-    downloadGitInit(git_url, ACTION_NAME)
+    try:
+        downloadGitInit(git_url, ACTION_NAME)
+    except Exception as e:
+        opError(e,ACTION_NAME)
+
     domain = getUrlDomain(url)
     save_path = getSaveFilePath(url) + ACTION_NAME + ".html"
     order = ["python", ACTION_NAME+".py", domain, "-o", save_path]
@@ -26,8 +30,9 @@ def start(url, args):
         for key, value in args['args'].items():
             order.append(key)
             order.append(value)
-    print(order)
+
     execPythonCode(ACTION_NAME, order)
+
     # format file
     addEndingLineFeedOfFile(save_path)
 

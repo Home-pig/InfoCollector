@@ -9,6 +9,10 @@ import requests
 
 from lib.common import getSaveFilePath
 from lib.formatOutput import *
+import urllib3
+
+# remove the warning when the requests arguments verify set as False
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 ACTION_NAME = "w3techs"
 
@@ -22,7 +26,12 @@ def start(target, arg):
 
     headers = {
         'user-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36'}
-    r = requests.get(url=url, headers=headers,verify=False)
+    try:
+        r = requests.get(url=url, headers=headers, verify=False)
+    except Exception as e:
+        opError(e, ACTION_NAME)
+        return 0
+
     # save file
     save_path = getSaveFilePath(target) + ACTION_NAME + ".html"
     with open(save_path, "w", encoding="utf-8") as f:
@@ -32,6 +41,7 @@ def start(target, arg):
 
     opFinishAction(ACTION_NAME)
 
+
 if __name__ == "__main__":
     url = "https://www.baidu.com"
-    start(url,"")
+    start(url, "")
